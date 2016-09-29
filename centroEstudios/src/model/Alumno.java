@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +25,10 @@ public class Alumno {
 	
 	@Column
 	private String telefono;
+	
+	@ManyToOne
+	@JoinColumn(name="centros_id")
+	private Centro centro;
 
 	public Integer getnAlumno() {
 		return nAlumno;
@@ -54,6 +60,14 @@ public class Alumno {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+
+	public Centro getCentro() {
+		return centro;
+	}
+
+	public void setCentro(Centro centro) {
+		this.centro = centro;
 	}
 	
 	
