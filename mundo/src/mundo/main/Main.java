@@ -11,6 +11,8 @@ import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.sql.JoinType;
 
 public class Main {
 
@@ -22,7 +24,29 @@ public class Main {
 		
 		Criteria c = s.createCriteria(Pais.class);
 		
-		c.setFetchMode("ciudades", FetchMode.JOIN);
+		//c.createAlias("ciudades", "c");
+		
+		//c.add(Restrictions.gt("c.populacion", 4000000));
+		
+		//c.createCriteria("ciudades").add(Restrictions.gt("populacion", 4000000));
+		
+		c.add(
+				Restrictions.or(
+						Restrictions.eq("continente", "Europe"), 
+						Restrictions.eq("continente", "Asia")));
+		
+		c.setFirstResult(0);
+		c.setMaxResults(10);
+		
+		List<Pais> paises = c.list();
+		
+		for(Pais p : paises){
+			System.out.println(p.getNombre());
+		}
+		
+		s.getTransaction().commit();
+		
+		/*c.setFetchMode("ciudades", FetchMode.JOIN);
 		c.setFetchMode("idiomas", FetchMode.JOIN);
 		
 		List<Pais> paises = c.list();
@@ -42,7 +66,7 @@ public class Main {
 			for(Idioma idioma : p.getIdiomas()){
 				System.out.println(idioma.getId().getIdioma());
 			}
-		}
+		}*/
 
 	}
 

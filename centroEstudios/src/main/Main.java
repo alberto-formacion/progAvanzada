@@ -55,6 +55,8 @@ public class Main {
 		cAlumnos.setFetchMode("centro", FetchMode.JOIN);
 		
 		List<Alumno> alumnos = cAlumnos.list();
+
+		s.getTransaction().commit();
 		
 		for(Alumno a : alumnos){
 			System.out.println(a.getNombre() + " esta en el centro " + a.getCentro().getNombreCentro());
