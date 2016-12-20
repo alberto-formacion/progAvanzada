@@ -20,18 +20,6 @@ public class PaisController {
 	@RequestMapping(method=RequestMethod.GET)
 	public ArrayList<Pais> getPaises(){
 		return paisService.getPaises();
-		/*ArrayList<Pais> paises = new ArrayList<Pais>();
-		
-		Pais p = new Pais();
-		
-		p.setIdPais("AAA");
-		p.setNombre("Albertia");
-		p.setRegion("EUROPE");
-		p.setContinente("EUROPE");
-		
-		paises.add(p);
-		
-		return paises;*/
 	}
 
 }
