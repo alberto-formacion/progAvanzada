@@ -28,4 +28,14 @@ export class TodoComponent implements OnInit {
     this.todos.push(todoNuevo);
   }
 
+  cambiarEstado(todo:Todo) {
+    todo.terminada = true;
+  }
+
+  setTodoClasses(todo:Todo){
+    if(todo.terminada){
+      return "tachado";
+    }
+  }
+
 }

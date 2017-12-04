@@ -4,7 +4,10 @@
 </div>
 <div>
   <ul>
-    <li *ngFor="let todo of todos">
+    <li 
+      *ngFor="let todo of todos"
+      (click)="cambiarEstado(todo)"
+      [ngClass]="setTodoClasses(todo)">
       {{todo.nombre}}
     </li>
   </ul>
