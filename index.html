@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Prueba API</title>
+</head>
+<body>
+<ul id="listaDiscos">
+</ul>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(function(){
+	$.ajax({
+		type: "GET",
+		dataType: "json",
+		url: "http://localhost:8080/cds"
+	}).done(function(discos){
+		for(var i=0;i<discos.length;i++){
+			$("<li/>",{
+				text: discos[i].titulo + " (" + discos[i].autor + ")"
+			}).appendTo($("#listaDiscos"));
+		}
+	});	
+})
+
+</script>
+</body>
+</html>
