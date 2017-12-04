@@ -1,0 +1,11 @@
+<div>
+  <input type="text" [(ngModel)]="nombreTodo">
+  <button (click)="addTodo()">Crear</button>
+</div>
+<div>
+  <ul>
+    <li *ngFor="let todo of todos">
+      {{todo.nombre}}
+    </li>
+  </ul>
+</div>
