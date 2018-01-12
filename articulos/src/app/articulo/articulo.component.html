@@ -1,3 +1,4 @@
-<p>
-  articulo works!
-</p>
+<div *ngFor="let articulo of articulos">
+    <h2>{{articulo.title}}</h2>
+    <p>{{articulo.body}}</p>
+</div>
